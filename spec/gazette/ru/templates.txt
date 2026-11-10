@@ -1,0 +1,122 @@
+# Шаблоны утреннего выпуска (spec/gazette.md). Строка: `ключ = текст`.
+# {имя} значение; {имя|один|два|пять} форма слова по числу, без самого числа;
+# {имя~m} {имя~f} {имя~n} число словом до десяти (мужской, женский, средний род), дальше цифрами;
+# ^ после имени или рода: с заглавной буквы. ==текст== выделено маркером.
+# Ключ с хвостом .mac или .win берётся на своей платформе вместо ключа без хвоста.
+
+weekday = Понедельник|Вторник|Среда|Четверг|Пятница|Суббота|Воскресенье
+month = января|февраля|марта|апреля|мая|июня|июля|августа|сентября|октября|ноября|декабря
+number.m = один|два|три|четыре|пять|шесть|семь|восемь|девять|десять
+number.f = одна|две|три|четыре|пять|шесть|семь|восемь|девять|десять
+number.n = одно|два|три|четыре|пять|шесть|семь|восемь|девять|десять
+
+dateline = {weekday}, {day} {month} {year}
+when.today = сегодня в {time}
+when.yesterday = вчера в {time}
+when.date = {day} {month} в {time}
+more = и ещё {n}
+
+weather.quiet = тихо
+weather.calm = спокойно
+weather.busy = оживлённо
+weather.issues = {n|выдана|выданы|выдано} {n~f} {n|копия|копии|копий}
+weather.tails = {n|снята|сняты|снято} {n~f} {n|метка|метки|меток} аккаунта
+week = За неделю: копий выдано {issues}, ссылок почищено {links}, со стола убрано {desk}
+
+rubric.reprint = Перепечатка
+rubric.editing = Редактура
+rubric.desk = Стол
+rubric.archive = Архив
+rubric.empty = Редакция
+
+reprint.one.title = Выдана копия: {title}
+reprint.one.body = {when^} из Архива выдана копия документа «{title}». Оригинал остался в Архиве.
+reprint.many.title = {n~f^} {n|копия ушла|копии ушли|копий ушло} из Архива
+reprint.many.body = Оригиналы остались в Архиве.
+reprint.where = Кому и под каким кодом, записано в выдачах: окно Архива, вкладка «Выдачи».
+reprint.spoil = Копию в Загрузках Стол уберёт через сутки после выдачи.
+
+editing.title = {n~f^} {n|ссылка несла|ссылки несли|ссылок несли} метку аккаунта
+editing.body = Метка связывает ссылку с тем, кто поделился. Редакция сняла {n|её|их|их} при копировании.
+editing.item = хвост =={tail}==
+editing.item.unnamed = хвост без постоянного имени
+editing.item.times = , {n} {n|раз|раза|раз}
+editing.also = Ещё {n} {n|ссылка почищена|ссылки почищены|ссылок почищено} от рекламных меток молча.
+editing.tracks.title = {n~f^} {n|ссылка почищена|ссылки почищены|ссылок почищено} от рекламных меток
+editing.tracks.body = Такие метки сообщают сайту, откуда пришёл переход. Меток аккаунта в ссылках не было.
+
+service.instagram = Instagram
+service.youtube = YouTube
+service.spotify = Spotify
+service.tiktok = TikTok
+service.x = X
+service.other = Другой сайт
+
+desk.moved.title = Стол убрал {n~m} {n|файл|файла|файлов}
+desk.moved.body = {n|Он лежит|Они лежат|Они лежат} в «Редакция/Убрано со стола». Ничего не удалено, вернуть можно из окна Стола.
+desk.copies = Со стола {n|ушла|ушли|ушло} и {n~f} {n|копия|копии|копий} Перепечатки: {n|ей|им|им} больше суток.
+desk.returned = Возвращено на место: {n}.
+desk.copies.title = Со стола {n|ушла|ушли|ушло} {n~f} {n|копия|копии|копий} Перепечатки
+desk.copies.body = Копии старше суток Стол убирает в «Редакция/Убрано со стола».
+desk.next.archive.title = «{name}» уйдёт в Архив {in}
+desk.next.moved.title = «{name}» уйдёт со стола {in}
+desk.in.now = при следующем проходе
+desk.in.tomorrow = завтра
+desk.in.days = через {n~m} {n|день|дня|дней}
+desk.state = На столе {files} {files|файл|файла|файлов}, за неделю {week|уйдёт|уйдут|уйдут} {week}. Ничего не удаляется.
+desk.state.none = На столе {files} {files|файл|файла|файлов}, на этой неделе не уйдёт ни один.
+desk.week.title = На этой неделе со стола {n|уйдёт|уйдут|уйдёт} {n~m} {n|файл|файла|файлов}
+desk.week.body = Всего на столе {files}. Срок каждого виден в окне Стола.
+
+archive.one.title = В Архиве новый документ: {title}
+archive.by.desk = Стол сдал его в Архив сам: вышел срок файла с личными данными.
+archive.by.hand = Документ сдан в Архив вручную.
+archive.sealed.mac = Файл зашифрован и открывается по Touch ID.
+archive.sealed.win = Файл зашифрован и открывается через Windows Hello.
+archive.many.title = В Архиве {n~m} {n|новый документ|новых документа|новых документов}
+archive.many.body.mac = Файлы зашифрованы и открываются по Touch ID.
+archive.many.body.win = Файлы зашифрованы и открываются через Windows Hello.
+
+empty.title = С прошлого выпуска ничего не уходило
+empty.body = Ссылки не чистились, копии не выдавались, Стол ничего не убирал.
+first.title = Первый выпуск
+first.body = Редакция начала вести записи. Здесь будет то, что уходит с компьютера: ссылки, копии документов, файлы со стола.
+
+doc.rubric.archive = Архив
+doc.rubric.expires = Срок документа
+doc.rubric.oldest = Самый старый документ
+doc.none.title = Архив не создан
+doc.none.note = Создать его можно из меню Редакции, пункт «Архив…».
+doc.empty.title = В Архиве пусто
+doc.empty.note = Документ можно перетащить в окно Архива.
+doc.expires.title = {title} истекает {day} {month}
+doc.expires.title.year = {title} истекает {day} {month} {year}
+doc.expires.note = {n|Остался|Осталось|Осталось} {n} {n|день|дня|дней}
+doc.today.title = {title} истекает сегодня
+doc.expired.title = {title}: срок истёк {day} {month}
+doc.expired.title.year = {title}: срок истёк {day} {month} {year}
+doc.expired.note = {n} {n|день|дня|дней} назад
+doc.oldest.note = В Архиве {n} {n|день|дня|дней}
+doc.oldest.new = В Архиве меньше суток
+
+issued.rubric = Выдано за неделю
+issued.none = За неделю копий не выдавали.
+
+sources.rubric = Источники
+sources.big.night.title = Ночью из {app} ушло {size}
+sources.big.title = Из {app} ушло {size}
+sources.new.title = Новое знакомство: {app} и {to}
+sources.count.title = {n~f^} {n|программа выходила|программы выходили|программ выходило} в сеть
+sources.to.cloud = облако {company}
+sources.to.vpn = адрес за VPN
+sources.to.unknown = неизвестная сеть
+sources.item.big = {app} → {to}, =={size}==
+sources.new.label = Новое
+sources.item.new = {app} → {to}
+sources.top.label = Больше всех
+sources.item.top = {app}, {size}
+sources.off = Сеть не записывалась.
+sources.none = Программы в сеть не выходили.
+
+colophon.left = Собрано на этом компьютере. Выпуск никуда не отправляется.
+colophon.next = Следующий выпуск завтра в {hour}:00

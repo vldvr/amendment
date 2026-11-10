@@ -1,0 +1,78 @@
+name: Сборка
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  macos:
+    name: Проверки и образ диска
+    runs-on: macos-15
+    permissions:
+      contents: read
+      id-token: write
+      attestations: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Самый новый Xcode
+        run: |
+          latest="$(ls -d /Applications/Xcode_*.app 2>/dev/null | sort -V | tail -1)"
+          if [ -n "$latest" ]; then sudo xcode-select -s "$latest"; fi
+          swift --version
+      - name: Эталоны спека
+        run: |
+          python3 spec/tools/check-link-rules.py
+          python3 spec/tools/check-desk.py
+          python3 spec/tools/check-issue-code.py
+          python3 spec/tools/check-reprint.py
+          python3 spec/tools/check-gazette.py
+      - name: База компаний для «Источников»
+        run: mac/scripts/fetch-asn.sh
+      - name: Проверки на синтетических данных
+        run: swift run --package-path mac redakciya-checks
+      - name: Приложение и .dmg
+        run: mac/scripts/build-app.sh --dmg
+      - name: Проверка собранного приложения
+        run: |
+          app=mac/build/Redakciya.app/Contents/MacOS/Redakciya
+          lipo -archs "$app" | grep -q arm64
+          lipo -archs "$app" | grep -q x86_64
+          test -f mac/build/Redakciya.app/Contents/Resources/asn.bin
+          test -f mac/build/Redakciya.app/Contents/Resources/Fonts/OFL.txt
+          "$app" --icon-png /tmp/icon.png 64
+          test -s /tmp/icon.png
+      # Подпись происхождения: кто угодно может проверить, что .dmg собран этим
+      # workflow из этого репозитория, командой `gh attestation verify`.
+      - uses: actions/attest-build-provenance@4d101475d8b20a2381f78447822ac1eab6504dd8 # v4.2.2
+        if: startsWith(github.ref, 'refs/tags/v')
+        with:
+          subject-path: mac/dist/*.dmg
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: macos
+          path: |
+            mac/dist/*.dmg
+            mac/dist/*.sha256
+
+  release:
+    name: Релиз
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: macos
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          path: dist
+          merge-multiple: true
+      - uses: softprops/action-gh-release@efb35369e0ad2afab669f228072c1b0d510eae64 # v3.0.3
+        with:
+          files: dist/*
+          generate_release_notes: true

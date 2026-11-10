@@ -1,0 +1,43 @@
+id	kind	input	journal	expect	note
+purpose-plain	purpose	аренда, Петров		аренда, Петров	как ввёл человек
+purpose-spaces	purpose	  аренда,   Петров  		аренда, Петров	серии пробелов и края
+purpose-newline	purpose	аренда,\nПетров		аренда, Петров	перевод строки — пробел
+purpose-tab	purpose	банк\tипотека		банк ипотека	табуляция — пробел
+purpose-prefix	purpose	Для: аренда		аренда	«Для:» уже есть на копии
+purpose-prefix-lower	purpose	для аренды		аренды	приставка без двоеточия
+purpose-prefix-word	purpose	Длинная история		Длинная история	«для» только отдельным словом
+purpose-tail	purpose	аренда, Петров.,;		аренда, Петров	хвостовая пунктуация
+purpose-sign	purpose	ТСЖ № X5SR		ТСЖ X5SR	№ в назначении читался бы как код
+purpose-case	purpose	ИП Петров		ИП Петров	регистр не меняется
+purpose-empty	purpose	   		—	пусто
+purpose-only-prefix	purpose	Для:		—	после приставки пусто
+purpose-60	purpose	абвгдежзийабвгдежзийабвгдежзийабвгдежзийабвгдежзийабвгдежзий		абвгдежзийабвгдежзийабвгдежзийабвгдежзийабвгдежзийабвгдежзий	ровно 60 знаков
+purpose-61	purpose	абвгдежзийабвгдежзийабвгдежзийабвгдежзийабвгдежзийабвгдежзийк		—	61 знак
+code-empty-journal	code	H7RK		ok	первый код
+code-two-off	code	H7RK	H7AA,X55R	ok	отличается в двух позициях
+code-one-off	code	H7RK	H7RX	—	отличается в одной позиции
+code-same	code	H7RK	H7RK	—	уже выдан
+code-bad-char	code	H7R0		—	0 нет в алфавите
+code-bad-n	code	HNRK		—	N нет в алфавите
+code-short	code	H7R		—	три знака
+code-lower	code	h7rk		—	код пишется заглавными
+name-jpg	name	H7RK jpg		Копия H7RK.jpg	картинка
+name-pdf	name	H7RK pdf		Копия H7RK.pdf	PDF
+name-taken	name	H7RK jpg	Копия H7RK.jpg	Копия H7RK 2.jpg	имя занято, как в Столе
+name-taken-two	name	H7RK jpg	Копия H7RK.jpg | Копия H7RK 2.jpg	Копия H7RK 3.jpg	занято дважды
+spoil-fresh	spoil	2026-11-09T12:00:00Z 2026-11-09T18:00:00Z		fresh	шесть часов
+spoil-almost	spoil	2026-11-09T12:00:00Z 2026-11-10T11:59:59Z		fresh	без секунды сутки
+spoil-day	spoil	2026-11-09T12:00:00Z 2026-11-10T12:00:00Z		expired	ровно сутки
+spoil-midnight	spoil	2026-11-09T23:50:00Z 2026-11-10T00:10:00Z		fresh	полночь ничего не значит
+spoil-future	spoil	2026-11-10T12:00:00Z 2026-11-09T12:00:00Z		fresh	часы переведены назад
+search-code	search	H7RK	H7RK:аренда, Петров:Паспорт РФ | X55R:банк:СНИЛС	H7RK	код целиком
+search-code-lower	search	h7rk	H7RK:аренда, Петров:Паспорт РФ | X55R:банк:СНИЛС	H7RK	регистр не важен
+search-code-cyr	search	Н7РК	H7RK:аренда, Петров:Паспорт РФ | X55R:банк:СНИЛС	H7RK	кириллическая раскладка
+search-code-typo	search	H7RX	H7RK:аренда, Петров:Паспорт РФ | X55R:банк:СНИЛС	H7RK	одна опечатка прощается
+search-code-ambiguous	search	X5SR	X55R:банк:СНИЛС | X5SY:работа:СНИЛС	X55R,X5SY	несколько похожих — все, без выбора
+search-text	search	петров	H7RK:аренда, Петров:Паспорт РФ | X55R:банк:СНИЛС	H7RK	подстрока в «Для»
+search-title	search	снилс	H7RK:аренда, Петров:Паспорт РФ | X55R:банк:СНИЛС | 432E:работа:СНИЛС	X55R,432E	подстрока в названии, порядок журнала
+search-yo	search	семен	H7RK:аренда, Семён:Паспорт РФ	H7RK	ё = е
+search-none	search	ипотека	H7RK:аренда, Петров:Паспорт РФ	—	ничего
+search-word4	search	банк	X55R:банк:СНИЛС	X55R	похоже на код (6AHK), кода нет — ищется как текст
+search-code-miss-text	search	2026	H7RK:аренда 2026:Паспорт РФ	H7RK	на код не похоже ни одной записи — ищется как текст

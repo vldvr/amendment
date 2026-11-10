@@ -1,0 +1,13 @@
+{
+  "pins" : [
+    {
+      "identity" : "zamazka",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/vldvr/zamazka",
+      "state" : {
+        "revision" : "738d6dac5a5c8c7f0bcf30100b8d9c3ed65c5de2"
+      }
+    }
+  ],
+  "version" : 2
+}

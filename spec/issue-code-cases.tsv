@@ -1,0 +1,34 @@
+id	journal	lines	expect	how	note
+live-band	RXYH,432E,54YW	Для: аренда, Петров, 08.11.2026 | Копия. Другим лицам не передаётся. | № RXYH	RXYH	exact	полоса, как её прочитал Vision в живом тесте
+pattern	RXYH,432E	для: аренда, петров, № RXYH	RXYH	exact	строка узора, строчными
+sign-n-ordinal	WXPU,AC99	Nº WXPU	WXPU	exact	«Nº» вместо «№»
+sign-no	432E,AC99	No 432E	432E	exact	«No» вместо «№»
+sign-degree	54YW,AC99	N° 54YW	54YW	exact	«N°» вместо «№»
+sign-tight	54YW,AC99	№54YW	54YW	exact	без пробела после знака
+split	AC99,X55R	№ AC 99	AC99	exact	OCR разорвал код пробелом
+cyrillic	AC99,X55R	№ АС99	AC99	exact	А и С кириллические
+twin-mn	HMM2,X55R	№ HNN2	HMM2	exact	N читается как M; с алфавитом 1a это слово нашло чужой код
+twin-mn-ordinal	HMM2,X55R	Nº HNN2	HMM2	exact	замена N→M только внутри слова, иначе «Nº» станет «Mº»
+twin-b8	YBBP,X55R	№ Y88P	YBBP	exact	8 читается как B
+twin-z7	574Y,X55R	№ 5Z4Y	574Y	exact	Z читается как 7
+twin-fe	E3K9,X55R	№ F3K9	E3K9	exact	F читается как E
+twin-g6	6AXR,X55R	№ GAXR	6AXR	exact	G читается как 6
+unread-one	AC99,X55R	№ AO99	AC99	exact	C прочитана как O: один неразобранный знак после №
+unread-two	AC99,X55R	№ OO99	—	—	два неразобранных знака
+unread-date	2526,AC99	Для: аренда, Петров, 08.11.2026	—	—	0 в «2026» — неразобранный знак, но не после №
+fuzzy-one	X55R,RXYH	№ X5SR	X55R	fuzzy	одна ошибка после №
+fuzzy-not-signed	X55R,RXYH	Для: банк, X5SR	—	—	та же ошибка без № не прощается
+fuzzy-two	X55R,RXYH	№ XSSR	—	—	две ошибки
+fuzzy-ambiguous	H7RK,H7XP	№ H7RP	?	—	на одну ошибку от обоих кодов; коды отличаются в двух позициях, это допустимо
+mrz-near	PETK,AC99	PNRUSOBRAZCOV<<PETR<IVANOVICH<<<<<<	—	—	PETR из машиночитаемой строки — сосед PETK, но не после №
+mrz-exact	PETR,AC99	PNRUSOBRAZCOV<<PETR<IVANOVICH<<<<<< | № AC99	AC99	exact	PETR совпал точно, но слово после № важнее
+sign-lost	AC99,X55R	# AC99	AC99	exact	знак номера потерян, точное совпадение без №
+two-bare	AC99,X55R	AC99 | X55R	?	—	два точных совпадения, ни одного после №
+foreign	AC99,X55R	№ 7777	—	—	кода нет в журнале
+win-n2	X55R,RXYH	N2 X5SR	X55R	fuzzy	Windows пишет «№» как «N2»; одна ошибка после него прощается
+win-bang	X55R,RXYH	N! X5SR	X55R	fuzzy	Windows: «N!»
+win-apostrophe	AC99,X55R	N' AO99	AC99	exact	Windows: «N'» и один неразобранный знак
+win-cyr-colon	T7WX,X55R	Н: T7WY	T7WX	fuzzy	Windows: кириллическая «Н:» → «H:»
+win-cyr-apostrophe	X55R,RXYH	Н' X5SR	X55R	fuzzy	Windows: «Н'»
+n-space	X55R,RXYH	N X5SR	X55R	fuzzy	голая N с пробелом — знак
+n-glued	MUAH,X55R	Konnq. ApyrhM nmuaM He	—	—	«лицам» в английском движке; голая N без пробела — не знак, иначе MUAM нашёл бы MUAH

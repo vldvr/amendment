@@ -1,0 +1,45 @@
+id	name	flags	added	enabled	modified	today	term	stage	action
+plain-fresh-day0	отчёт.pdf		2026-11-08	2026-01-01	2026-11-08	2026-11-08	30	fresh	none
+plain-fresh-day19	отчёт.pdf		2026-10-20	2026-01-01	2026-10-20	2026-11-08	30	fresh	none
+plain-aging-day20	отчёт.pdf		2026-10-19	2026-01-01	2026-10-19	2026-11-08	30	aging	none
+plain-aging-day29	отчёт.pdf		2026-10-10	2026-01-01	2026-10-10	2026-11-08	30	aging	none
+plain-expired-day30	отчёт.pdf		2026-10-09	2026-01-01	2026-10-09	2026-11-08	30	expired	move
+plain-expired-year	invoice.xlsx		2025-03-14	2025-01-01	2025-03-14	2026-11-08	30	expired	move
+plain-month-boundary	ticket.pdf		2026-01-30	2026-01-01	2026-01-30	2026-03-01	30	expired	move
+plain-leap-day	ticket.pdf		2028-01-31	2028-01-01	2028-01-31	2028-03-01	30	expired	move
+plain-nonleap-29	ticket.pdf		2027-01-31	2027-01-01	2027-01-31	2027-03-01	30	aging	none
+grace-old-file	setup.dmg		2023-05-01	2026-11-01	2023-05-01	2026-11-08	30	fresh	none
+grace-ends	setup.dmg		2023-05-01	2026-10-09	2023-05-01	2026-11-08	30	expired	move
+grace-added-after	setup.dmg		2026-10-09	2026-10-01	2026-10-09	2026-11-08	30	expired	move
+hold-modified-today	заметки.txt		2026-09-01	2026-01-01	2026-11-08	2026-11-08	30	expired	hold
+hold-modified-yesterday	заметки.txt		2026-09-01	2026-01-01	2026-11-07	2026-11-08	30	expired	hold
+no-hold-two-days	заметки.txt		2026-09-01	2026-01-01	2026-11-06	2026-11-08	30	expired	move
+modified-not-for-aging	заметки.txt		2026-10-15	2026-01-01	2026-11-08	2026-11-08	30	aging	none
+shot-fresh-day9	Снимок экрана 2026-10-30 в 12.01.03.png	screenshot	2026-10-30	2026-01-01	2026-10-30	2026-11-08	14	fresh	none
+shot-aging-day10	Снимок экрана 2026-10-29 в 12.01.03.png	screenshot	2026-10-29	2026-01-01	2026-10-29	2026-11-08	14	aging	none
+shot-expired-day14	Снимок экрана 2026-10-25 в 12.01.03.png	screenshot	2026-10-25	2026-01-01	2026-10-25	2026-11-08	14	expired	move
+personal-fresh-day1	IMG_4021.jpg	personal	2026-11-07	2026-01-01	2026-11-07	2026-11-08	3	fresh	none
+personal-aging-day2	IMG_4021.jpg	personal	2026-11-06	2026-01-01	2026-11-06	2026-11-08	3	aging	none
+personal-expired-day3	IMG_4021.jpg	personal	2026-11-05	2026-01-01	2026-11-05	2026-11-08	3	expired	move
+personal-kept	IMG_4021.jpg	personal,kept	2026-11-05	2026-01-01	2026-11-05	2026-11-08	30	fresh	none
+personal-screenshot	Снимок экрана 2026-11-05 в 09.00.00.png	personal,screenshot	2026-11-05	2026-01-01	2026-11-05	2026-11-08	3	expired	move
+personal-screenshot-kept	Снимок экрана 2026-11-05 в 09.00.00.png	personal,screenshot,kept	2026-11-05	2026-01-01	2026-11-05	2026-11-08	14	fresh	none
+kept-without-personal	отчёт.pdf	kept	2026-10-09	2026-01-01	2026-10-09	2026-11-08	30	expired	move
+skip-hidden	.localized		2020-01-01	2020-01-01	2020-01-01	2026-11-08	30	skip	none
+skip-ds-store	.DS_Store		2020-01-01	2020-01-01	2020-01-01	2026-11-08	30	skip	none
+skip-desktop-ini	desktop.ini		2020-01-01	2020-01-01	2020-01-01	2026-11-08	30	skip	none
+skip-thumbs	Thumbs.db		2020-01-01	2020-01-01	2020-01-01	2026-11-08	30	skip	none
+skip-crdownload	video.mp4.crdownload		2020-01-01	2020-01-01	2020-01-01	2026-11-08	30	skip	none
+skip-safari-download	video.mp4.download		2020-01-01	2020-01-01	2020-01-01	2026-11-08	30	skip	none
+skip-part	archive.zip.part		2020-01-01	2020-01-01	2020-01-01	2026-11-08	30	skip	none
+skip-partial-upper	archive.zip.PARTIAL		2020-01-01	2020-01-01	2020-01-01	2026-11-08	30	skip	none
+skip-opdownload	archive.zip.opdownload		2020-01-01	2020-01-01	2020-01-01	2026-11-08	30	skip	none
+skip-tmp	~WRL0001.tmp		2020-01-01	2020-01-01	2020-01-01	2026-11-08	30	skip	none
+skip-dir	Проекты	dir	2020-01-01	2020-01-01	2020-01-01	2026-11-08	30	skip	none
+skip-app	Telegram.app	dir	2020-01-01	2020-01-01	2020-01-01	2026-11-08	30	skip	none
+skip-link	Документы — ярлык	link	2020-01-01	2020-01-01	2020-01-01	2026-11-08	30	skip	none
+skip-excluded	договор.pdf	excluded	2020-01-01	2020-01-01	2020-01-01	2026-11-08	30	skip	none
+skip-excluded-personal	паспорт.jpg	excluded,personal	2020-01-01	2020-01-01	2020-01-01	2026-11-08	3	skip	none
+not-hidden-dot-inside	report.final.pdf		2026-10-01	2026-01-01	2026-10-01	2026-11-08	30	expired	move
+no-extension	README		2026-10-01	2026-01-01	2026-10-01	2026-11-08	30	expired	move
+partial-word-not-ext	partial.pdf		2026-10-01	2026-01-01	2026-10-01	2026-11-08	30	expired	move

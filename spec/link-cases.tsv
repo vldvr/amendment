@@ -1,0 +1,111 @@
+id	input	output	class	show	removed	note
+ig-srtk	https://www.instagram.com/reel/DRabc123/?utm_source=ig_web_copy_link&srtk=MTIzNDU2Nzg5YQ==	https://www.instagram.com/reel/DRabc123/	gives_away	card	utm_source,srtk	1e заход 1
+ig-vrfl	https://www.instagram.com/p/DQxyz/?utm_source=ig_web_copy_link&vrfl=MTIzNDU2Nzg5YQ==	https://www.instagram.com/p/DQxyz/	gives_away	card	utm_source,vrfl	1e заход 2: другое имя, то же значение
+ig-igsh	https://www.instagram.com/p/DQxyz/?igsh=MTIzNDU2Nzg5	https://www.instagram.com/p/DQxyz/	gives_away	card	igsh	
+ig-igshid	https://www.instagram.com/p/DQxyz/?igshid=abc123	https://www.instagram.com/p/DQxyz/	gives_away	card	igshid	
+ig-igsi	https://www.instagram.com/p/DQxyz/?igsi=abc123	https://www.instagram.com/p/DQxyz/	gives_away	card	igsi	
+ig-utm-only	https://www.instagram.com/p/DQxyz/?utm_source=ig_web_copy_link	https://www.instagram.com/p/DQxyz/	tracks	silent	utm_source	одна метка кампании: карточки нет
+ig-new-name	https://www.instagram.com/p/DQxyz/?zzkey=abc123	https://www.instagram.com/p/DQxyz/	gives_away	card	zzkey	белый список: неизвестное имя на домене убирается
+ig-mobile-host	https://m.instagram.com/p/DQxyz/?igsh=abc	https://m.instagram.com/p/DQxyz/	gives_away	card	igsh	m.
+ig-clean	https://www.instagram.com/p/DQxyz/	https://www.instagram.com/p/DQxyz/	none	none		
+ig-anchor-kept	https://www.instagram.com/p/DQxyz/?igsh=abc#comments	https://www.instagram.com/p/DQxyz/#comments	gives_away	card	igsh	якорь без = не трогаем
+ig-name-case	https://www.instagram.com/p/DQxyz/?IGSH=abc	https://www.instagram.com/p/DQxyz/	gives_away	card	igsh	имя без учёта регистра
+ig-name-encoded	https://www.instagram.com/p/DQxyz/?ig%73h=abc	https://www.instagram.com/p/DQxyz/	gives_away	card	igsh	имя после раскодирования
+ig-fragment-unknown	https://www.instagram.com/p/DQxyz/#foo=bar	https://www.instagram.com/p/DQxyz/#foo=bar	none	none		в фрагменте белый список не действует
+ig-foreign-lookalike	https://notinstagram.com/p/x/?igsh=abc	https://notinstagram.com/p/x/?igsh=abc	none	none		чужой домен
+ig-foreign-suffix	https://instagram.com.example.ru/p/x/?igsh=abc	https://instagram.com.example.ru/p/x/?igsh=abc	none	none		чужой домен
+ig-foreign-userinfo	https://www.instagram.com@example.com/p/x/?igsh=abc	https://www.instagram.com@example.com/p/x/?igsh=abc	none	none		хост после @
+foreign-igsh	https://example.com/?igsh=abc	https://example.com/?igsh=abc	none	none		имя igsh вне Instagram не трогаем
+yt-short-si	https://youtu.be/dQw4w9WgXcQ?si=AbCdEf1234567890	https://youtu.be/dQw4w9WgXcQ	gives_away	card	si	
+yt-short-si-t	https://youtu.be/dQw4w9WgXcQ?si=AbCdEf1234567890&t=43	https://youtu.be/dQw4w9WgXcQ?t=43	gives_away	card	si	t нужен
+yt-order	https://www.youtube.com/watch?si=AbC&v=dQw4w9WgXcQ&t=43s	https://www.youtube.com/watch?v=dQw4w9WgXcQ&t=43s	gives_away	card	si	порядок остальных сохраняется
+yt-list	https://www.youtube.com/watch?v=dQw4w9WgXcQ&list=PL123&si=AbC	https://www.youtube.com/watch?v=dQw4w9WgXcQ&list=PL123	gives_away	card	si	
+yt-playlist	https://www.youtube.com/playlist?list=PL123&si=AbC	https://www.youtube.com/playlist?list=PL123	gives_away	card	si	
+yt-clean	https://www.youtube.com/watch?v=dQw4w9WgXcQ&t=43	https://www.youtube.com/watch?v=dQw4w9WgXcQ&t=43	none	none		
+yt-music	https://music.youtube.com/watch?v=abc&si=xyz	https://music.youtube.com/watch?v=abc	gives_away	card	si	поддомен
+yt-mobile-mixed	https://m.youtube.com/watch?v=abc&si=xyz&utm_source=x	https://m.youtube.com/watch?v=abc	gives_away	card	si,utm_source	класс = высший из убранных
+yt-is-undecided	https://www.youtube.com/watch?v=abc&is=xyz	https://www.youtube.com/watch?v=abc&is=xyz	none	none		is пока не правило (Не решено)
+yt-time-fragment	https://www.youtube.com/watch?v=abc#t=30	https://www.youtube.com/watch?v=abc#t=30	none	none		t в фрагменте нужен
+yt-fragment-utm	https://www.youtube.com/watch?v=abc#utm_source=x	https://www.youtube.com/watch?v=abc	tracks	silent	utm_source	пустой фрагмент убирается вместе с #
+yt-port	https://www.youtube.com:443/watch?v=abc&si=x	https://www.youtube.com:443/watch?v=abc	gives_away	card	si	порт
+yt-host-case	https://WWW.YouTube.com/watch?v=abc&si=x	https://WWW.YouTube.com/watch?v=abc	gives_away	card	si	хост без учёта регистра, запись сохраняется
+yt-http	http://youtu.be/abc?si=x	http://youtu.be/abc	gives_away	card	si	
+yt-scheme-case	HTTPS://youtu.be/abc?si=x	HTTPS://youtu.be/abc	gives_away	card	si	
+yt-foreign	https://notyoutube.com/watch?v=abc&si=xyz	https://notyoutube.com/watch?v=abc&si=xyz	none	none		чужой домен
+yt-foreign-suffix	https://youtube.com.example.org/watch?si=xyz	https://youtube.com.example.org/watch?si=xyz	none	none		чужой домен
+yt-foreign-userinfo	https://www.youtube.com@example.com/watch?si=abc	https://www.youtube.com@example.com/watch?si=abc	none	none		хост после @
+foreign-si	https://example.com/watch?si=abc	https://example.com/watch?si=abc	none	none		si вне YouTube и Spotify не трогаем
+sp-si	https://open.spotify.com/track/4uLU6hMCjMI75M1A2tKUQC?si=0123456789abcdef	https://open.spotify.com/track/4uLU6hMCjMI75M1A2tKUQC	gives_away	card	si	
+sp-intl	https://open.spotify.com/intl-ru/album/1abc?si=0123456789abcdef	https://open.spotify.com/intl-ru/album/1abc	gives_away	card	si	
+sp-receiver-tag	https://open.spotify.com/track/4uLU?si=0123456789abcdef&nd=1&dlsi=fedcba9876543210	https://open.spotify.com/track/4uLU?nd=1	gives_away	card	si,dlsi	nd пока не трогаем (Не решено)
+sp-dlsi-only	https://open.spotify.com/track/4uLU?nd=1&dlsi=fedcba9876543210	https://open.spotify.com/track/4uLU?nd=1	gives_away	card	dlsi	
+sp-utm	https://open.spotify.com/playlist/37i9?si=abc&utm_source=copy-link&utm_medium=social	https://open.spotify.com/playlist/37i9	gives_away	card	si,utm_source,utm_medium	
+sp-clean	https://open.spotify.com/track/4uLU	https://open.spotify.com/track/4uLU	none	none		
+tt-web-id	https://www.tiktok.com/@user/video/7300000000000000000?is_from_webapp=1&sender_device=pc&web_id=7300000000000000001	https://www.tiktok.com/@user/video/7300000000000000000	gives_away	card	is_from_webapp,sender_device,web_id	1e заход 1
+tt-web-id-only	https://www.tiktok.com/@user/video/7300000000000000000?web_id=7300000000000000001	https://www.tiktok.com/@user/video/7300000000000000000	gives_away	card	web_id	
+tt-tracks-only	https://www.tiktok.com/@user/video/7300000000000000000?is_from_webapp=1&sender_device=pc	https://www.tiktok.com/@user/video/7300000000000000000	tracks	silent	is_from_webapp,sender_device	
+tt-app-marks	https://www.tiktok.com/@user/video/7300000000000000000?_t=8abcDEF&_r=1	https://www.tiktok.com/@user/video/7300000000000000000	tracks	silent	_t,_r	низкая уверенность
+tt-keep-lang	https://www.tiktok.com/@user/video/7300000000000000000?lang=ru&web_id=7300000000000000001	https://www.tiktok.com/@user/video/7300000000000000000?lang=ru	gives_away	card	web_id	
+tt-short-vm	https://vm.tiktok.com/ZMabc123/	https://vm.tiktok.com/ZMabc123/	none	none		короткая ссылка
+tt-short-vt-query	https://vt.tiktok.com/ZSabc123/?utm_source=x	https://vt.tiktok.com/ZSabc123/?utm_source=x	none	none		короткую не трогаем целиком
+x-status	https://x.com/user/status/1234567890?s=20&t=AbCdEfGhIjKlMnOp	https://x.com/user/status/1234567890	gives_away	card	s,t	
+x-twitter-s46	https://twitter.com/user/status/1234567890?s=46	https://twitter.com/user/status/1234567890	tracks	silent	s	
+x-t-only	https://x.com/user/status/1234567890?t=AbCdEfGhIjKlMnOp	https://x.com/user/status/1234567890	gives_away	card	t	
+x-s-other-value	https://x.com/search?q=cats&s=typed	https://x.com/search?q=cats&s=typed	none	none		s с другим значением не метка
+x-search	https://x.com/search?q=cats%20dogs&src=typed_query	https://x.com/search?q=cats%20dogs&src=typed_query	none	none		поисковый запрос
+gd-sharing	https://drive.google.com/file/d/1AbC/view?usp=sharing	https://drive.google.com/file/d/1AbC/view	tracks	silent	usp	
+gd-sheet-drive-link	https://docs.google.com/spreadsheets/d/1AbC/edit?usp=drive_link	https://docs.google.com/spreadsheets/d/1AbC/edit	tracks	silent	usp	
+gd-resourcekey	https://drive.google.com/file/d/1AbC/view?usp=sharing&resourcekey=0-AbCdEf	https://drive.google.com/file/d/1AbC/view?resourcekey=0-AbCdEf	tracks	silent	usp	resourcekey нужен
+gd-resourcekey-only	https://drive.google.com/file/d/1AbC/view?resourcekey=0-AbCdEf	https://drive.google.com/file/d/1AbC/view?resourcekey=0-AbCdEf	none	none		
+gd-gid-fragment	https://docs.google.com/spreadsheets/d/1AbC/edit?usp=sharing#gid=123	https://docs.google.com/spreadsheets/d/1AbC/edit#gid=123	tracks	silent	usp	gid в фрагменте нужен
+gd-open-id	https://drive.google.com/open?id=1AbC&usp=sharing	https://drive.google.com/open?id=1AbC	tracks	silent	usp	
+gd-usp-other	https://docs.google.com/forms/d/e/1F/viewform?usp=pp_url&entry.1=x	https://docs.google.com/forms/d/e/1F/viewform?usp=pp_url&entry.1=x	none	none		другие значения usp не трогаем
+gd-no-tail	https://drive.google.com/file/d/1AbC/view	https://drive.google.com/file/d/1AbC/view	none	none		владелец виден на странице, хвоста нет
+yd-i	https://disk.yandex.ru/i/AbCdEf	https://disk.yandex.ru/i/AbCdEf	none	none		диск: хвоста нет, карточки нет
+yd-d	https://disk.yandex.ru/d/AbCdEf/folder	https://disk.yandex.ru/d/AbCdEf/folder	none	none		
+yd-yadi	https://yadi.sk/d/AbCdEf	https://yadi.sk/d/AbCdEf	none	none		
+yd-utm	https://disk.yandex.ru/d/AbCdEf?utm_source=x	https://disk.yandex.ru/d/AbCdEf	tracks	silent	utm_source	общее правило работает и на диске
+ys-search	https://yandex.ru/search/?text=%D0%BF%D0%BE%D0%B3%D0%BE%D0%B4%D0%B0&ysclid=lx3abc123	https://yandex.ru/search/?text=%D0%BF%D0%BE%D0%B3%D0%BE%D0%B4%D0%B0	tracks	silent	ysclid	запрос остаётся в исходном кодировании
+ys-site	https://example.ru/catalog/item?ysclid=lx3abc&id=5	https://example.ru/catalog/item?id=5	tracks	silent	ysclid	
+ys-only	https://example.ru/?ysclid=lx3abc	https://example.ru/	tracks	silent	ysclid	
+g-search	https://www.google.com/search?q=cats+and+dogs&utm_source=x	https://www.google.com/search?q=cats+and+dogs	tracks	silent	utm_source	
+g-search-keep	https://www.google.com/search?q=a%26b&hl=ru	https://www.google.com/search?q=a%26b&hl=ru	none	none		запрос и язык нужны
+fb	https://example.com/article?id=7&fbclid=IwAR0abc	https://example.com/article?id=7	tracks	silent	fbclid	
+fb-first	https://example.com/article?fbclid=IwAR0abc&id=7	https://example.com/article?id=7	tracks	silent	fbclid	
+wb-sn	https://www.wildberries.ru/catalog/12345/detail.aspx?targetUrl=SN	https://www.wildberries.ru/catalog/12345/detail.aspx	tracks	silent	targeturl	
+wb-other-value	https://www.wildberries.ru/catalog/12345/detail.aspx?targetUrl=GP	https://www.wildberries.ru/catalog/12345/detail.aspx?targetUrl=GP	none	none		другие значения targetUrl (Не решено)
+wb-utm	https://www.wildberries.ru/catalog/12345/detail.aspx?size=2&utm_source=ads	https://www.wildberries.ru/catalog/12345/detail.aspx?size=2	tracks	silent	utm_source	
+ozon-product-undecided	https://www.ozon.ru/product/some-thing-123456/?at=AbCdEf&sh=Xy12AbCd	https://www.ozon.ru/product/some-thing-123456/?at=AbCdEf&sh=Xy12AbCd	none	none		at и sh пока не правило (Не решено)
+ozon-utm	https://www.ozon.ru/product/some-thing-123456/?utm_source=ads&at=AbCdEf	https://www.ozon.ru/product/some-thing-123456/?at=AbCdEf	tracks	silent	utm_source	
+ozon-short	https://ozon.ru/t/AbCdEf	https://ozon.ru/t/AbCdEf	none	none		короткая ссылка
+ozon-short-www-query	https://www.ozon.ru/t/AbCdEf?utm_source=x	https://www.ozon.ru/t/AbCdEf?utm_source=x	none	none		короткую не трогаем целиком
+ozon-not-short	https://www.ozon.ru/team/?utm_source=x	https://www.ozon.ru/team/	tracks	silent	utm_source	/team/ не /t/
+clck	https://clck.ru/3AbCdE	https://clck.ru/3AbCdE	none	none		короткая ссылка
+clck-query	https://clck.ru/3AbCdE?utm_source=x	https://clck.ru/3AbCdE?utm_source=x	none	none		короткую не трогаем целиком
+figma-undecided	https://www.figma.com/design/AbC/Name?node-id=1-2&t=XyZ	https://www.figma.com/design/AbC/Name?node-id=1-2&t=XyZ	none	none		t пока не правило (Не решено), node-id нужен
+figma-node	https://www.figma.com/design/AbC/Name?node-id=1-2&utm_source=x	https://www.figma.com/design/AbC/Name?node-id=1-2	tracks	silent	utm_source	
+utm-all	https://example.com/?utm_source=a&utm_medium=b&utm_campaign=c	https://example.com/	tracks	silent	utm_source,utm_medium,utm_campaign	
+utm-case	https://example.com/p?UTM_Source=a&id=1	https://example.com/p?id=1	tracks	silent	utm_source	
+utm-encoded-name	https://example.com/p?utm%5Fsource=a&id=1	https://example.com/p?id=1	tracks	silent	utm_source	
+utm-prefix-boundary	https://example.com/p?utmost=1&utm=2	https://example.com/p?utmost=1&utm=2	none	none		utm_ с подчёркиванием, не просто utm
+utm-duplicate	https://example.com/p?utm_source=a&id=1&utm_source=b	https://example.com/p?id=1	tracks	silent	utm_source,utm_source	
+utm-no-value	https://example.com/p?utm_source&id=1	https://example.com/p?id=1	tracks	silent	utm_source	
+empty-value-kept	https://example.com/?q=&utm_source=a	https://example.com/?q=	tracks	silent	utm_source	
+trailing-amp	https://example.com/?id=1&utm_source=a&	https://example.com/?id=1	tracks	silent	utm_source	пустые сегменты уходят, если что-то убрали
+empty-segment-kept	https://example.com/?id=1&&x=2	https://example.com/?id=1&&x=2	none	none		ничего не убрали: строка не меняется ни на байт
+value-encoding-kept	https://example.com/?q=%D0%BF%D1%80&utm_source=a	https://example.com/?q=%D0%BF%D1%80	tracks	silent	utm_source	
+value-with-equals	https://example.com/?token=a=b==&utm_source=a	https://example.com/?token=a=b==	tracks	silent	utm_source	имя до первого =
+idn-host	https://президент.рф/?utm_source=a	https://президент.рф/	tracks	silent	utm_source	
+localhost-port	http://127.0.0.1:8080/a?utm_source=x	http://127.0.0.1:8080/a	tracks	silent	utm_source	
+frag-mixed	https://example.com/page?id=1#utm_source=a&section=2	https://example.com/page?id=1#section=2	tracks	silent	utm_source	
+frag-anchor	https://example.com/page?utm_source=a#section	https://example.com/page#section	tracks	silent	utm_source	
+frag-empty-hash	https://example.com/page?utm_source=a#	https://example.com/page#	tracks	silent	utm_source	
+frag-spa-route	https://example.com/#/page?utm_source=a	https://example.com/#/page?utm_source=a	none	none		маршрут SPA в фрагменте не трогаем
+frag-text-directive	https://example.com/page?utm_source=a#:~:text=hello	https://example.com/page#:~:text=hello	tracks	silent	utm_source	текстовый фрагмент нужен
+frag-text-directive-head	https://example.com/page#utm_source=a:~:text=hello	https://example.com/page#:~:text=hello	tracks	silent	utm_source	
+skip-scheme-mailto	mailto:a@example.com?utm_source=x	mailto:a@example.com?utm_source=x	none	none		не http(s)
+skip-scheme-file	file:///tmp/a?utm_source=x	file:///tmp/a?utm_source=x	none	none		
+skip-scheme-long-s	httpſ://youtu.be/abc?si=xyz	httpſ://youtu.be/abc?si=xyz	none	none		схема сравнивается только латиницей: ſ (U+017F) не s
+skip-text	смотри https://youtu.be/abc?si=xyz	смотри https://youtu.be/abc?si=xyz	none	none		не одна ссылка: v1 текст не разбирает
+skip-no-scheme	youtu.be/abc?si=xyz	youtu.be/abc?si=xyz	none	none		без схемы не ссылка
+skip-empty-host	https:///a?utm_source=x	https:///a?utm_source=x	none	none		

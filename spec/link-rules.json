@@ -1,0 +1,119 @@
+{
+  "format": 1,
+  "version": 1,
+  "updated": "2026-11-08",
+  "comment": "Правила хвостов ссылок. Описание и алгоритм: spec/link-rules.md. Сервер раздаёт этот файл; клиент берёт его, только если format ему известен и version больше текущего.",
+
+  "sharing_apps": [
+    {"id": "safari",    "kind": "browser",   "mac": ["com.apple.Safari"],                      "win": []},
+    {"id": "chrome",    "kind": "browser",   "mac": ["com.google.Chrome"],                     "win": ["chrome.exe"]},
+    {"id": "edge",      "kind": "browser",   "mac": ["com.microsoft.edgemac"],                 "win": ["msedge.exe"]},
+    {"id": "firefox",   "kind": "browser",   "mac": ["org.mozilla.firefox"],                   "win": ["firefox.exe"]},
+    {"id": "arc",       "kind": "browser",   "mac": ["company.thebrowser.Browser"],            "win": []},
+    {"id": "brave",     "kind": "browser",   "mac": ["com.brave.Browser"],                     "win": ["brave.exe"]},
+    {"id": "opera",     "kind": "browser",   "mac": ["com.operasoftware.Opera"],               "win": ["opera.exe"]},
+    {"id": "vivaldi",   "kind": "browser",   "mac": ["com.vivaldi.Vivaldi"],                   "win": ["vivaldi.exe"]},
+    {"id": "yandex",    "kind": "browser",   "mac": ["ru.yandex.desktop.yandex-browser"],      "win": ["browser.exe"]},
+    {"id": "telegram",  "kind": "messenger", "mac": ["ru.keepcoder.Telegram", "org.telegram.desktop"], "win": ["Telegram.exe"]},
+    {"id": "discord",   "kind": "messenger", "mac": ["com.hnc.Discord"],                       "win": ["Discord.exe"]},
+    {"id": "spotify",   "kind": "player",    "mac": ["com.spotify.client"],                    "win": ["Spotify.exe"]}
+  ],
+
+  "short_links": [
+    {"host": "clck.ru"},
+    {"host": "vm.tiktok.com"},
+    {"host": "vt.tiktok.com"},
+    {"host": "ozon.ru", "path_prefix": "/t/"}
+  ],
+
+  "global": {
+    "params": [
+      {"prefix": "utm_", "class": "tracks", "confidence": "high", "note": "метки рекламной кампании"},
+      {"name": "fbclid", "class": "tracks", "confidence": "high", "note": "идентификатор перехода из Facebook"},
+      {"name": "ysclid", "class": "tracks", "confidence": "high", "note": "идентификатор перехода из Яндекс Поиска"}
+    ]
+  },
+
+  "domains": [
+    {
+      "id": "instagram",
+      "hosts": ["instagram.com"],
+      "mode": "allow",
+      "unknown_class": "gives_away",
+      "note": "Сервис меняет имя параметра (igshid, igsh, igsi, srtk, vrfl), значение постоянное и привязано к отправителю. Поэтому остаётся только то, что в needed; остальное убирается.",
+      "params": [
+        {"name": "igsh",   "class": "gives_away", "confidence": "medium", "note": "2024-2025, по отчётам"},
+        {"name": "igshid", "class": "gives_away", "confidence": "medium", "note": "старое имя, по отчётам"},
+        {"name": "igsi",   "class": "gives_away", "confidence": "low",    "note": "по одной заметке к релизу чистильщика"},
+        {"name": "srtk",   "class": "gives_away", "confidence": "high",   "note": "1e, заход 1: base64 от 9 цифр и буквы a"},
+        {"name": "vrfl",   "class": "gives_away", "confidence": "high",   "note": "1e, заход 2: то же значение, другое имя"}
+      ]
+    },
+    {
+      "id": "youtube",
+      "hosts": ["youtube.com", "youtu.be"],
+      "mode": "deny",
+      "params": [
+        {"name": "si", "class": "gives_away", "confidence": "high", "note": "1e: 16 знаков, меняется при каждом «Поделиться»"},
+        {"name": "t",    "class": "needed", "confidence": "high", "note": "время"},
+        {"name": "v",    "class": "needed", "confidence": "high", "note": "ролик"},
+        {"name": "list", "class": "needed", "confidence": "high", "note": "плейлист"}
+      ]
+    },
+    {
+      "id": "spotify",
+      "hosts": ["spotify.com"],
+      "mode": "deny",
+      "params": [
+        {"name": "si",   "class": "gives_away", "confidence": "high", "note": "1e: 16 hex, остаётся в адресе получателя"},
+        {"name": "dlsi", "class": "gives_away", "confidence": "medium", "note": "1e: Spotify дописывает метку визита получателя; уходит дальше при пересылке"}
+      ]
+    },
+    {
+      "id": "tiktok",
+      "hosts": ["tiktok.com"],
+      "mode": "deny",
+      "params": [
+        {"name": "web_id",         "class": "gives_away", "confidence": "high", "note": "1e: ID браузера отправителя, 19 цифр"},
+        {"name": "is_from_webapp", "class": "tracks",     "confidence": "high", "note": "1e"},
+        {"name": "sender_device",  "class": "tracks",     "confidence": "high", "note": "1e"},
+        {"name": "_t",             "class": "tracks",     "confidence": "low",  "note": "метка «скопировано из приложения»"},
+        {"name": "_r",             "class": "tracks",     "confidence": "low",  "note": "то же"}
+      ]
+    },
+    {
+      "id": "x",
+      "hosts": ["x.com", "twitter.com"],
+      "mode": "deny",
+      "params": [
+        {"name": "t", "class": "gives_away", "confidence": "medium", "note": "по отчётам: закодированный ID пользователя; вживую не проверяли"},
+        {"name": "s", "values": ["19", "20", "46"], "class": "tracks", "confidence": "medium", "note": "по отчётам: устройство; значения из 1e"}
+      ]
+    },
+    {
+      "id": "google-docs",
+      "hosts": ["drive.google.com", "docs.google.com"],
+      "mode": "deny",
+      "params": [
+        {"name": "usp", "values": ["sharing", "drive_link"], "class": "tracks", "confidence": "medium", "note": "откуда скопировали; другие значения usp не трогаем"},
+        {"name": "resourcekey", "class": "needed", "confidence": "high", "note": "доступ к старым файлам"}
+      ]
+    },
+    {
+      "id": "figma",
+      "hosts": ["figma.com"],
+      "mode": "deny",
+      "params": [
+        {"name": "node-id", "class": "needed", "confidence": "medium", "note": "узел макета"}
+      ]
+    },
+    {
+      "id": "wildberries",
+      "hosts": ["wildberries.ru"],
+      "mode": "deny",
+      "params": [
+        {"name": "targetUrl", "values": ["SN"], "class": "tracks", "confidence": "low", "note": "1e: метка источника"}
+      ]
+    }
+  ]
+}
